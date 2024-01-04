@@ -1,15 +1,24 @@
 from sklearn.tree import DecisionTreeClassifier
 from joblib import load
 import os
+from rest_framework.response import Response
 
-
-
-def run(name):
+def run(data):
     path = os.path.join(os.getcwd(), 'machinelearning', 'arbol.pkl')
     arbol = load(path)
     #test
-    y_pred = arbol.predict([[50,0,1,0,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,1,0,1,1]])
-    print(f'La predicción es: {y_pred}')
+    #datos_recibidos = [[48,0,0,1,0,0,1,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0]]
+    datos_recibidos = data
+    y_pred = arbol.predict(datos_recibidos)[0]
+    
+    if (y_pred == 'Otitis Externa'):
+        prob = arbol.predict_proba(datos_recibidos)[0][1]
+    elif (y_pred == 'Sarna Sarcoptica'):
+        prob = arbol.predict_proba(datos_recibidos)[0][2]
+    elif (y_pred == 'Alergia Picadura Pulga'):
+        prob = arbol.predict_proba(datos_recibidos)[0][0]
+
+    return {"predicción": y_pred, "probabilidad": prob}
     
 
 
