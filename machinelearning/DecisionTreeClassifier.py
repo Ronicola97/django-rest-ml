@@ -18,7 +18,7 @@ def run(data):
     elif (y_pred == 'Alergia Picadura Pulga'):
         prob = arbol.predict_proba(datos_recibidos)[0][0]
 
-    return {"predicción": y_pred, "probabilidad": prob}
+    return {"prediccion": y_pred, "probabilidad": prob}
     
 
 
