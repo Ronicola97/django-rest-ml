@@ -4,7 +4,7 @@ import os
 from rest_framework.response import Response
 
 def run(data):
-    path = os.path.join(os.getcwd(), 'machinelearning', 'arbol.pkl')
+    path = os.path.join(os.getcwd(), 'machinelearning', 'dermacan_random_forest.joblib')
     arbol = load(path)
     #test
     #datos_recibidos = [[48,0,0,1,0,0,1,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0]]
@@ -17,6 +17,8 @@ def run(data):
         prob = arbol.predict_proba(datos_recibidos)[0][2]
     elif (y_pred == 'Alergia Picadura Pulga'):
         prob = arbol.predict_proba(datos_recibidos)[0][0]
+    elif (y_pred == 'Sin enfermedad'):
+        prob = arbol.predict_proba(datos_recibidos)[0][3]
 
     return {"prediccion": y_pred, "probabilidad": prob}
     
