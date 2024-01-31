@@ -20,7 +20,9 @@ def run(data):
     elif (y_pred == 'Sin enfermedad'):
         prob = arbol.predict_proba(datos_recibidos)[0][3]
 
-    return {"prediccion": y_pred, "probabilidad": prob}
+    restante = 1-prob;
+
+    return {"prediccion": y_pred, "probabilidad": prob, "restante": restante}
     
 
 
