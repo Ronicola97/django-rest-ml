@@ -13,7 +13,7 @@ def run(data):
     
     if (y_pred == 'Otitis Externa'):
         prob = arbol.predict_proba(datos_recibidos)[0][1]
-    elif (y_pred == 'Sarna Sarcoptica'):
+    elif (y_pred == 'Sarna Sarcóptica'):
         prob = arbol.predict_proba(datos_recibidos)[0][2]
     elif (y_pred == 'Alergia Picadura Pulga'):
         prob = arbol.predict_proba(datos_recibidos)[0][0]
