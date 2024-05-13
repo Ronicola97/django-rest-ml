@@ -4,7 +4,7 @@ import os
 from rest_framework.response import Response
 
 def run(data):
-    path = os.path.join(os.getcwd(), 'machinelearning', 'dermacan_random_forest.joblib')
+    path = os.path.join(os.getcwd(), 'machinelearning', 'dermacan_random_forest(1).joblib')
     arbol = load(path)
     #test
     #datos_recibidos = [[48,0,0,1,0,0,1,1,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0]]
